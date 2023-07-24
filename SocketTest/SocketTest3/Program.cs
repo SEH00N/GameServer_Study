@@ -14,6 +14,8 @@ namespace SocketTest3
 
         static void Client()
         {
+            Console.WriteLine("[클라이언트]");
+
             // 127.0.0.1:8081 주소의 서버로 연결할 소켓 생성
             TcpClient tcpClient = new TcpClient("127.0.0.1", 8081);
 

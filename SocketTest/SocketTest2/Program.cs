@@ -18,6 +18,8 @@ namespace SocketTest2
         
         static void Server()
         {
+            Console.WriteLine("[서버]");
+
             // 서버 생성
             TcpListener tcpListener = new TcpListener(IPAddress.Parse("127.0.0.1"), 8081);
             

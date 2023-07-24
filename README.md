@@ -292,5 +292,8 @@
 - C# TCP 소켓 통신 구조
   - [클라이언트 예제 코드](./SocketTest/SocketTest3/Program.cs)
   - [서버 예제 코드](./SocketTest/SocketTest2/Program.cs)
+  - 실행 결과
   <br/>
-  <image src="./ETC/TCP_ScoketCommunication.png"/>
+  <image src="./ETC/TCP_SocketCommunication_Debug.png"/>
+  <br/>
+  <image src="./ETC/TCP_SocketCommunication.png"/>
