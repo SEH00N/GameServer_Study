@@ -93,8 +93,13 @@
 <br/>
 
 - 상용 게임 서버 엔진
-
-    // 테이블 적기
+  |종류|차별성|지원 운영체제|지원 언어|
+  |:-:|:-:|:-:|:-:|
+  |프라우드넷<br/> http://www.proudnet.com |클라이언트-서버 간 네트워킹과 클라이언트 간 직접 네트워킹을 단순하게 사용할 수 있게 한다.<br/>네트워크 암호화, 압축, 흐름 제어 등 기능을 제공한다.|윈도우, 리눅스, ios, 안드로이드, 플스4, WebGL|C++, C#|
+  |포톤 서버<br/> http://www.photonengine.com |다양한 플랫폼의 게임 클라이언트를 지원한다.|윈도우, ios, 안드로이드, 플스, Xbox, WebGL|C#|
+  |게임스파크<br/> https://aws.amazon.com/ko/gamesparks/ |로그인, 매치메이킹, 플레이어 정보 관리 등을 서버 개발 없이도 가능하게 한다.|Saas형태|C++, C#, Objective-C, Java|
+  |플레이팹<br/> http://www.playfab.com |게임스파크와 유사|Saas형태|C++, C#, Lua, Objective-C, Java, JS|
+  |락넷<br/> http://www.jenkinssoftware.com |유니티 엔진과 언리얼 엔진에 기본 내장되어 있는 네트워크 엔진이다.|윈도우, 리눅스, ios, 안드로이드|C++, C#|
 
 <br/>
 
@@ -276,7 +281,7 @@
 
 <br/>
 
-- 통신
+- 통신 종단점
   - 응용 프로그램은 나의 소켓과 상대 소켓이 연결 된 것으로 생각하고 데이터를 송수신
   <br/>
   <image src="./ETC/SocketCommu.png"/>
