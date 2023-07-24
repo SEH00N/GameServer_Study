@@ -8,8 +8,8 @@ namespace SocketTest3
     {
         static void Main(string[] args)
         {
-            //GenerateTCPClient();
             Client();
+            //GenerateTCPClient();
         }
 
         static void Client()
@@ -50,18 +50,18 @@ namespace SocketTest3
             Console.ReadKey();
         }
 
-        static void GenerateTCPClient()
-        {
-            // 127.0.0.1:8080로 연결할 클라이언트 생성
-            TcpClient tcpClient = new TcpClient("127.0.0.1", 8080);
+        //static void GenerateTCPClient()
+        //{
+        //    // 127.0.0.1:8080로 연결할 클라이언트 생성
+        //    TcpClient tcpClient = new TcpClient("127.0.0.1", 8080);
             
-            if(tcpClient.Connected)
-                Console.WriteLine("서버 연결 성공");
-            else
-                Console.WriteLine("서버 연결 실패");
+        //    if(tcpClient.Connected)
+        //        Console.WriteLine("서버 연결 성공");
+        //    else
+        //        Console.WriteLine("서버 연결 실패");
 
-            tcpClient.Close();
-            Console.ReadKey();
-        }
+        //    tcpClient.Close();
+        //    Console.ReadKey();
+        //}
     }
 }

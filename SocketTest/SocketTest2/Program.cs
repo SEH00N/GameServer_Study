@@ -11,9 +11,9 @@ namespace SocketTest2
     {
         static void Main(string[] args)
         {
+            Server();
             //GenerateTCPListener(); 
             //GenerateTCPClient();
-            Server();
         }
         
         static void Server()
@@ -56,29 +56,29 @@ namespace SocketTest2
         }
 
         #region 연결클래스
-        static void GenerateTCPListener()
-        {
-            IPAddress ip = IPAddress.Parse("127.0.0.1");
-            TcpListener tcpListener = new TcpListener(ip, 13);
-            Console.WriteLine($"{tcpListener.LocalEndpoint.ToString()}");
-            Console.ReadKey();
-        }
+        //static void GenerateTCPListener()
+        //{
+        //    IPAddress ip = IPAddress.Parse("127.0.0.1");
+        //    TcpListener tcpListener = new TcpListener(ip, 13);
+        //    Console.WriteLine($"{tcpListener.LocalEndpoint.ToString()}");
+        //    Console.ReadKey();
+        //}
 
-        static void GenerateTCPClient()
-        {
-            // 얘가 서버
-            TcpListener tcpListener = new TcpListener(IPAddress.Parse("127.0.0.1"), 8080);
+        //static void GenerateTCPClient()
+        //{
+        //    // 얘가 서버
+        //    TcpListener tcpListener = new TcpListener(IPAddress.Parse("127.0.0.1"), 8080);
 
-            // TCP Listener 를 시작해서 입력 대기 상태로 전환
-            tcpListener.Start();
-            Console.WriteLine("대기 상태 시작");
+        //    // TCP Listener 를 시작해서 입력 대기 상태로 전환
+        //    tcpListener.Start();
+        //    Console.WriteLine("대기 상태 시작");
 
-            // 리스너를 오픈해서 클라이언트를 받아드릴 준비
-            TcpClient tcpClient = tcpListener.AcceptTcpClient();
-            Console.WriteLine("대기 상태 종료");
+        //    // 리스너를 오픈해서 클라이언트를 받아드릴 준비
+        //    TcpClient tcpClient = tcpListener.AcceptTcpClient();
+        //    Console.WriteLine("대기 상태 종료");
 
-            tcpListener.Stop();
-        }
+        //    tcpListener.Stop();
+        //}
         #endregion
     }
 }
