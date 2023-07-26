@@ -23,6 +23,8 @@ public class LibrarySample : MonoBehaviour {
 
 	// 접속할 IP 주소.
 	private string		m_strings = "";
+	private string 		m_sendComment = "";
+	private string 		m_receiveComment = "";
 
 	// 접속할 포트 번호.
 	private const int 	m_port = 50765;
@@ -67,7 +69,9 @@ public class LibrarySample : MonoBehaviour {
 			int recvSize = m_transport.Receive(ref buffer, buffer.Length);
 			if (recvSize > 0) {
 				string message = System.Text.Encoding.UTF8.GetString(buffer);
+				
 				Debug.Log(message);
+				m_receiveComment = message;
 			}
 		}
 	}
@@ -114,24 +118,37 @@ public class LibrarySample : MonoBehaviour {
 	void OnGUIServer()
 	{
 #if USE_TRANSPORT_TCP
-		if (GUI.Button (new Rect (20,60, 150,20), "Stop server")) {
+		if (GUI.Button (new Rect (20,100, 150,20), "Stop server")) {
 #else
-		if (GUI.Button (new Rect (20,60, 150,20), "Stop Listener")) {
+		if (GUI.Button (new Rect (20,100, 150,20), "Stop Listener")) {
 #endif
 			m_transport.StopServer();
 			isSelected = false;
 			m_strings = "";
 		}
+
+		GUI.TextField(new Rect(220, 400, 300, 30), $"받음 : {m_receiveComment}", 64);
+        if (GUI.Button(new Rect(20, 70, 150, 20), "Send message")) {
+            byte[] buffer = System.Text.Encoding.UTF8.GetBytes(m_sendComment);
+            m_transport.Send(buffer, buffer.Length);
+        }
+		else
+			m_sendComment = GUI.TextField(new Rect(220, 440, 300, 30), m_sendComment, 64);
 	}
 
 
 	void OnGUIClient()
 	{
 		// 클라이언트를 선택했을 때 접속할 서버의 주소를 입력합니다.
+
+		GUI.TextField(new Rect(220, 400, 300, 30), $"받음 : {m_receiveComment}", 64);
+
 		if (GUI.Button (new Rect (20,70,150,20), "Send message")) {
-			byte[] buffer = System.Text.Encoding.UTF8.GetBytes("Hellow, this is client.");	
+			byte[] buffer = System.Text.Encoding.UTF8.GetBytes(m_sendComment);	
 			m_transport.Send(buffer, buffer.Length);
-		}
+        }
+		else
+			m_sendComment = GUI.TextField(new Rect(220, 440, 300, 30), m_sendComment, 64);
 
 		if (GUI.Button (new Rect (20,100, 150,20), "Disconnect")) {
 			m_transport.Disconnect();
