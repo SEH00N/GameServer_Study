@@ -1,7 +1,7 @@
 using System.Drawing.Design;
 using System.Net;
 using System.Net.Sockets;
-using System.Security.Cryptography;
+using WinFormServer;
 
 namespace FormTest1
 {
@@ -22,9 +22,27 @@ namespace FormTest1
             InitializeComponent();
         }
 
+        private void AcceptClient()
+        {
+            while(true)
+            {
+                TcpClient clientSocket = listener.AcceptTcpClient();
+                if(clientSocket.Connected)
+                {
+                    string str = ((IPEndPoint)clientSocket.Client.RemoteEndPoint).ToString();
+                    listBox1.Items.Add(str);
+                }
+
+                EchoServer echoServer = new EchoServer(clientSocket);
+                Thread th = new Thread(new ThreadStart(echoServer.Process));
+                th.IsBackground = true;
+                th.Start();
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            listener = new TcpListener(IPAddress.Parse("127.0.0.1"), 8081);
+            listener = new TcpListener(IPAddress.Any, 8081);
             listener.Start();
 
             IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
@@ -40,44 +58,18 @@ namespace FormTest1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            clientSocket = listener.AcceptTcpClient();
-            if(clientSocket.Connected)
-            {
-                txt2.Text = ((IPEndPoint)clientSocket.Client.RemoteEndPoint).Address.ToString();
-            }
-
-            ns = clientSocket.GetStream();
-            bw = new BinaryWriter(ns);
-            br = new BinaryReader(ns);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            while(true)
-            {
-                if(clientSocket.Connected)
-                {
-                    if(DataReceive() == -1)
-                    {
-                        break;
-                    }
-
-                    DataSend();
-                }
-                else
-                {
-                    AllClose();
-                    break;
-                }
-            }
-
-            AllClose();
+            Thread th = new Thread(new ThreadStart(AcceptClient));
+            th.IsBackground = true;
+            th.Start();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            AllClose();
-            listener.Stop();
+            if(listener != null)
+            {
+                listener.Stop();
+                listener = null;
+            }
         }
 
         private int DataReceive()

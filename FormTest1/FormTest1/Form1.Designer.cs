@@ -29,75 +29,65 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.txt1 = new System.Windows.Forms.TextBox();
-            this.txt2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(42, 37);
+            this.label1.Location = new System.Drawing.Point(13, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "서버 IP : ";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 91);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "접속자 IP : ";
-            // 
             // txt1
             // 
-            this.txt1.Location = new System.Drawing.Point(120, 37);
+            this.txt1.Location = new System.Drawing.Point(91, 18);
             this.txt1.Name = "txt1";
             this.txt1.Size = new System.Drawing.Size(236, 27);
             this.txt1.TabIndex = 2;
             // 
-            // txt2
-            // 
-            this.txt2.Location = new System.Drawing.Point(120, 91);
-            this.txt2.Name = "txt2";
-            this.txt2.Size = new System.Drawing.Size(236, 27);
-            this.txt2.TabIndex = 3;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(379, 37);
+            this.button1.Location = new System.Drawing.Point(355, 18);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 27);
             this.button1.TabIndex = 4;
-            this.button1.Text = "접속 시작";
+            this.button1.Text = "서버 시작";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // listBox1
             // 
-            this.button2.Location = new System.Drawing.Point(379, 91);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(132, 27);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "송수신 시작";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 20;
+            this.listBox1.Location = new System.Drawing.Point(12, 97);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(474, 204);
+            this.listBox1.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(187, 20);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "연결 클라이언트 IP 리스트";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 158);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.txt2);
-            this.Controls.Add(this.txt1);
+            this.ClientSize = new System.Drawing.Size(497, 317);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txt1);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -111,10 +101,9 @@
         #endregion
 
         private Label label1;
-        private Label label2;
         private TextBox txt1;
-        private TextBox txt2;
         private Button button1;
-        private Button button2;
+        private ListBox listBox1;
+        private Label label2;
     }
 }
